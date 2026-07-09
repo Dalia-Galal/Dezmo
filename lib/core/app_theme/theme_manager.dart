@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 
 abstract class ThemeManager {
 
-  ThemeData themeData = ThemeData(
+  static ThemeData themeData = ThemeData(
     primaryColor: ColorPalette.mainColor,
     useMaterial3: true,
     textTheme: TextTheme(
       headlineSmall: TextStyle(
         fontFamily: 'Poppins',
-        fontSize: 24,
+        fontSize: 18,
         fontWeight: FontWeight.w600,
         color: ColorPalette.whiteColor,
       ),
@@ -33,9 +33,10 @@ abstract class ThemeManager {
       ),
       titleMedium: TextStyle(
         fontSize: 18,
-        fontWeight: FontWeight.w300,
+        fontWeight: FontWeight.w400,
         fontFamily: FontFamily.poppins,
         color: ColorPalette.semiBlackColor,
+
       ),
       bodyMedium: TextStyle(
         fontSize: 14,
