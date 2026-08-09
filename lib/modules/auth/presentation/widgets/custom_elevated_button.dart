@@ -2,7 +2,8 @@ import 'package:e_commerceapp/core/app_theme/color_palette.dart';
 import 'package:flutter/material.dart';
 
 class CustomElevatedButton extends StatelessWidget {
-  const CustomElevatedButton({super.key});
+  String text;
+  CustomElevatedButton({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +21,7 @@ class CustomElevatedButton extends StatelessWidget {
         maximumSize: Size.fromWidth(size / 0.55),
         minimumSize: MediaQuery.sizeOf(context) / 15,
       ),
-      child: Text(
-        'Login',
-        style: theme.textTheme.titleLarge,
-      ),
+      child: Text(text, style: theme.textTheme.titleLarge),
     );
   }
 }

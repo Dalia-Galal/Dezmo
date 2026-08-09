@@ -11,53 +11,70 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: ColorPalette.mainColor,
+      extendBodyBehindAppBar: true,
+      extendBody: true,
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Center(
+          child: Align(
+            alignment: AlignmentGeometry.topCenter,
             child: ConstrainedBox(
               constraints: BoxConstraints(
-                maxWidth: context.isTablet ? 500 : double.infinity,
+                maxWidth: context.isTablet ? 700 : double.infinity,
+                maxHeight: double.infinity
               ),
               child: Padding(
-                padding:  EdgeInsets.symmetric(
+                padding: EdgeInsets.symmetric(
                   vertical: context.spacingS,
-                  horizontal:  context.horizontalPadding ,
+                  horizontal: context.horizontalPadding,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  spacing: context.isTablet?100:20,
+
+                  mainAxisSize: MainAxisSize.min,
+                  spacing: context.mainSpacing,
                   children: [
-                    Center(
-                      child: Image.asset(
-                        Assets.images.routeLogo.path,
-                        width: context.isTablet ? 220 : 140,
-                        fit: BoxFit.contain,
-                      ),
+                    Image.asset(
+                      Assets.images.routeLogo.path,
+                      width: context.logoWidth,
+                      height: context.logoWidth * 0.5,
+                      fit: BoxFit.contain,
                     ),
 
                     Text(
                       'Welcome Back To Route',
-                      style: context.theme.textTheme.headlineSmall
+                      style: context.textTheme.headlineSmall!.copyWith(
+                        fontSize: context.fontHeadline,
+                      ),
                     ),
                     Text(
                       'Please sign in with your mail',
-                      style: context.theme.textTheme.titleSmall
+                      style: context.textTheme.titleSmall!.copyWith(
+                        fontSize: context.fontTitle,
+                      ),
                     ),
 
-                    Text('User Name', style: context.theme.textTheme.bodyLarge),
+                    Text(
+                      'User Name',
+                      style: context.textTheme.bodyLarge!.copyWith(
+                        fontSize: context.fontBody,
+                      ),
+                    ),
                     CustomTextFormField(hintText: 'Enter Your Name'),
-                    Text('Password', style: context.textTheme.bodyLarge),
+                    Text(
+                      'Password',
+                      style: context.textTheme.bodyLarge!.copyWith(
+                        fontSize: context.fontBody,
+                      ),
+                    ),
                     CustomTextFormField(hintText: 'Enter Your Password'),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
                           'Forgot password',
-                          style: context.theme.textTheme.titleMedium!.copyWith(
+                          style: context.textTheme.titleMedium!.copyWith(
                             color: ColorPalette.whiteColor,
                           ),
                           textAlign: TextAlign.right,
@@ -65,7 +82,16 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    CustomElevatedButton(),
+                    SizedBox(height: context.spacingS),
+                    CustomElevatedButton(text:  'Login',),
+
+                    Text(
+                      'Don’t have an account? Create Account',
+                      style: context.textTheme.titleMedium!.copyWith(
+                        color: ColorPalette.whiteColor,
+                        fontSize: context.fontTitle,
+                      ),
+                    ),
                   ],
                 ),
               ),
