@@ -2,15 +2,18 @@ import 'package:e_commerceapp/core/app_theme/color_palette.dart';
 import 'package:flutter/material.dart';
 
 class CustomElevatedButton extends StatelessWidget {
-  String text;
-  CustomElevatedButton({super.key, required this.text});
+  final String text;
+  final void Function()? onPressed;
+  const CustomElevatedButton({super.key,
+    required this.text,
+    required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     double size = MediaQuery.sizeOf(context).shortestSide;
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: onPressed,
 
       style: ElevatedButton.styleFrom(
         foregroundColor: ColorPalette.mainColor,

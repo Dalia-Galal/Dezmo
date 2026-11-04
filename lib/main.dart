@@ -1,11 +1,13 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:e_commerceapp/core/app_theme/theme_manager.dart';
+import 'package:e_commerceapp/core/di/service_locator.dart';
 import 'package:e_commerceapp/core/routes_manager/app_router.dart';
-import 'package:e_commerceapp/modules/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(DevicePreview(enabled: true, builder: (context) => MyApp()));
+  WidgetsFlutterBinding.ensureInitialized();
+  setupDependencies();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -13,7 +15,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp.router(
       title: 'Dezmo',
       debugShowCheckedModeBanner: false,
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       //useInheritedMediaQuery: true,
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
-      routerConfig:AppRouter.router
+      routerConfig: AppRouter.router,
     );
   }
 }
